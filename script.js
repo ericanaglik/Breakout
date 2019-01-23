@@ -19,11 +19,12 @@ var brickHeight = 20;
 var brickPadding = 10;
 var brickOffsetTop = 30;
 var brickOffsetLeft = 30;
+
 var bricks = [];
 for(var c=0; c<brickColumnCount; c++) {
     bricks[c] = [];
     for(var r=0; r<brickRowCount; r++) {
-        bricks[c][r] = { x: 0, y: 0 }
+        bricks[c][r] = { x: 0, y: 0 };
     }
 }
 
@@ -62,10 +63,9 @@ function drawPaddle() {
     ctx.fill();
     ctx.closePath();
 }
-
 function drawBricks() {
     for(var c=0; c<brickColumnCount; c++) {
-        for(var r=0l r<brickRowCount; r++) {
+        for(var r=0; r<brickRowCount; r++) {
             var brickX = (c*(brickWidth+brickPadding))+brickOffsetLeft;
             var brickY = (r*(brickHeight+brickPadding))+brickOffsetTop;
             bricks[c][r].x = brickX;
@@ -90,13 +90,17 @@ function draw() {
     }
     if(y + dy < ballRadius) {
         dy = -dy;
-    } else if(y + dy > canvas.height-ballRadius) {
+    }
+    else if(y + dy > canvas.height-ballRadius) {
         if(x > paddleX && x < paddleX + paddleWidth) {
-            dy = -dy;
+           if(y= y-paddleHeight){
+            dy = -dy  ;
+			 }
         }
         else {
             alert("GAME OVER");
             document.location.reload();
+            clearInterval(interval); // Needed for Chrome to end game
         }
     }
     
