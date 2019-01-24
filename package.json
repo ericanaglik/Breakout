@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/ericanaglik/Breakout/issues"
   },
-  "homepage": "https://github.com/ericanaglik/Breakout#readme"
+  "homepage": "https://github.com/ericanaglik/Breakout#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^5.12.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.15.0"
+  }
 }
