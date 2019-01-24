@@ -31,21 +31,30 @@ for(var c=0; c<brickColumnCount; c++) {
 
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
+document.addEventListener("mousemove", mouseMoveHandler, false);
 
 function keyDownHandler(e) {
-  if(e.keyCode == 39) {
-    rightPressed = true;
-  }
-  else if(e.keyCode == 37) {
-    leftPressed = true;
-  }
+    if(e.key == "Right" || e.key == "ArrowRight") {
+        rightPressed = true;
+    }
+    else if(e.key == "Left" || e.key == "ArrowLeft") {
+        leftPressed = true;
+    }
 }
+
 function keyUpHandler(e) {
-  if(e.keyCode == 39) {
-    rightPressed = false;
-  }
-  else if(e.keyCode == 37) {
-    leftPressed = false;
+    if(e.key == "Right" || e.key == "ArrowRight") {
+        rightPressed = false;
+    }
+    else if(e.key == "Left" || e.key == "ArrowLeft") {
+        leftPressed = false;
+    }
+}
+
+function mouseMoveHandler(e) {
+  var relativeX = e.clientX - canvas.offsetLeft;
+  if(relativeX > 0 && relativeX < canvas.width) {
+    paddleX = relativeX - paddleWidth/2;
   }
 }
 function collisionDetection() {
@@ -57,16 +66,15 @@ function collisionDetection() {
           dy = -dy;
           b.status = 0;
           score++;
+          if(score == brickRowCount*brickColumnCount) {
+            alert("YOU WIN, CONGRATS!");
+            document.location.reload();
+            clearInterval(interval); // Needed for Chrome to end game
+          }
         }
       }
     }
   }
-}
-
-function drawScore() {
-    ctx.font = "16px Arial";
-    ctx.fillStyle = "#0095DD";
-    ctx.fillText("Score: "+score, 8, 20);
 }
 
 function drawBall() {
@@ -100,6 +108,11 @@ function drawBricks() {
     }
   }
 }
+function drawScore() {
+  ctx.font = "16px Arial";
+  ctx.fillStyle = "#0095DD";
+  ctx.fillText("Score: "+score, 8, 20);
+}
 
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -122,6 +135,7 @@ function draw() {
     else {
       alert("GAME OVER");
       document.location.reload();
+      clearInterval(interval); // Needed for Chrome to end game
     }
   }
 
@@ -136,4 +150,4 @@ function draw() {
   y += dy;
 }
 
-setInterval(draw, 10);
+var interval = setInterval(draw, 10);
