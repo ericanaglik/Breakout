@@ -14,6 +14,7 @@ let rightPressed = false;
 let leftPressed = false;
 const brickRowCount = 5;
 const brickColumnCount = 3;
+const totalBricks = brickColumnCount * brickRowCount;
 const brickWidth = 75;
 const brickHeight = 20;
 const brickPadding = 10;
@@ -109,7 +110,7 @@ function drawBricks() {
 }
 function drawScore() {
   ctx.font = '16px Arial';
-  ctx.fillStyle = 'black';
+  ctx.fillStyle = 'white';
   ctx.fillText(`Score: ${score}`, 8, 20);
 }
 function drawLives() {
