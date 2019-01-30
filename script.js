@@ -1,7 +1,101 @@
+// Ball
+// Paddle
+// Brick
+// Score
+// Lives
+// Game
+
+class Ball {
+  constructor() {
+    this.x = 0;
+    this.y = 0;
+    this.dx = 2;
+    this.dy = -2;
+    this.radius = radius;
+  }
+  move() {
+    this.x += this.dx;
+    this.y += this.dy;
+  }
+  render(ctx) {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+    ctx.fillStyle = 'lightblue';
+    ctx.fill();
+    ctx.closePath();
+  }
+}
+
+class Brick {
+  constructor() {
+    this.x = 0;
+    this.y = 0;
+    this.status = status;
+    this.color = color;
+    this.brickWidth = 75;
+    this.brickHeight = 20;
+  }
+  render(ctx) {
+    ctx.beginPath();
+    ctx.rect(brickX, brickY, brickWidth, brickHeight);
+    ctx.fillStyle = 'magenta';
+    ctx.fill();
+    ctx.closePath();
+  }
+}
+
+class Paddle {
+  constructor() {
+    this.x = 0;
+    this.y = 0;
+    this.color = color;
+    this.paddleHeight = 10;
+    this.paddleWidth = 75;
+  }
+  render(ctx) {
+    ctx.beginPath();
+    ctx.rect(paddleX, canvas.height - paddleHeight, paddleWidth, paddleHeight);
+    ctx.fillStyle = '#cf79f2';
+    ctx.fill();
+    ctx.closePath();
+  }
+}
+
+class Score {
+  constructor() {
+    this.x = 0;
+    this.y = 0;
+    this.color = color;
+    this.score = 0;
+    this.font = font;
+  }
+  render(ctx) {
+    ctx.font = '16px Arial';
+    ctx.fillStyle = 'white';
+    ctx.fillText(`Score: ${score}`, 8, 20);
+  }
+  update(points) {
+    
+  }
+  reset() {
+
+  }
+}
+
+class Game {
+  constructor() {
+    this.ball = new Ball()
+  }
+}
+
 // stores a reference to the <canvas> element to the canvas variable
 const canvas = document.getElementById('myCanvas');
 // created ctx variable to store the 2D rendering content (the actual too used to paint on the canvas)
 const ctx = canvas.getContext('2d');
+
+const ball = new Ball(canvas.width / 2, canvas.height - 30)
+
+
 const ballRadius = 10;
 let x = canvas.width / 2;
 let y = canvas.height - 30;
@@ -62,7 +156,7 @@ function collisionDetection() {
   for (let c = 0; c < brickColumnCount; c++) {
     for (let r = 0; r < brickRowCount; r++) {
       const b = bricks[c][r];
-      if (b.status == 1) {
+      if (b.status === 1) {
         if (x > b.x && x < b.x + brickWidth && y > b.y && y < b.y + brickHeight) {
           dy = -dy;
           b.status = 0;
@@ -128,7 +222,7 @@ function draw() {
   drawLives();
   collisionDetection();
 
-  if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
+  if (ball.x + ball.dx > canvas.width - ballRadius || x + dx < ballRadius) {
     dx = -dx;
   }
   if (y + dy < ballRadius) {
@@ -149,6 +243,13 @@ function draw() {
         paddleX = (canvas.width - paddleWidth) / 2;
       }
     }
+  }
+
+  function randomColors() {
+    let r = 0;
+    let g = 0;
+    let b = 0;
+    for (i )
   }
 
   if (rightPressed && paddleX < canvas.width - paddleWidth) {
