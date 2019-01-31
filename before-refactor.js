@@ -90,6 +90,8 @@ function drawPaddle() {
   ctx.fill();
   ctx.closePath();
 }
+
+// challenge 1 complete
 function drawBricks() {
   for (let c = 0; c < brickColumnCount; c++) {
     for (let r = 0; r < brickRowCount; r++) {
@@ -100,7 +102,13 @@ function drawBricks() {
         bricks[c][r].y = brickY;
         ctx.beginPath();
         ctx.rect(brickX, brickY, brickWidth, brickHeight);
-        ctx.fillStyle = '#0095DD';
+        if (c === 0) {
+          ctx.fillStyle = 'pink';
+        } else if (c === 1) {
+          ctx.fillStyle = 'purple';
+        } else if (c === 2) {
+          ctx.fillStyle = 'blue';
+        }
         ctx.fill();
         ctx.closePath();
       }
