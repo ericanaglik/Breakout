@@ -92,31 +92,6 @@ function drawPaddle() {
 }
 
 // challenge 1.1 complete
-function drawBricks() {
-  for (let c = 0; c < brickColumnCount; c++) {
-    for (let r = 0; r < brickRowCount; r++) {
-      if (bricks[c][r].status === 1) {
-        const brickX = (r * (brickWidth + brickPadding)) + brickOffsetLeft;
-        const brickY = (c * (brickHeight + brickPadding)) + brickOffsetTop;
-        bricks[c][r].x = brickX;
-        bricks[c][r].y = brickY;
-        ctx.beginPath();
-        ctx.rect(brickX, brickY, brickWidth, brickHeight);
-        if (c === 0) {
-          ctx.fillStyle = '#0095DD';
-        } else if (c === 1) {
-          ctx.fillStyle = '#7ED321';
-        } else if (c === 2) {
-          ctx.fillStyle = '#F5A622';
-        }
-        ctx.fill();
-        ctx.closePath();
-      }
-    }
-  }
-}
-
-// challenge 1.2 complete
 // function drawBricks() {
 //   for (let c = 0; c < brickColumnCount; c++) {
 //     for (let r = 0; r < brickRowCount; r++) {
@@ -127,10 +102,12 @@ function drawBricks() {
 //         bricks[c][r].y = brickY;
 //         ctx.beginPath();
 //         ctx.rect(brickX, brickY, brickWidth, brickHeight);
-//         if (r % 2) {
-//           ctx.fillStyle = 'pink';
-//         } else {
-//           ctx.fillStyle = 'purple';
+//         if (c === 0) {
+//           ctx.fillStyle = '#0095DD';
+//         } else if (c === 1) {
+//           ctx.fillStyle = '#7ED321';
+//         } else if (c === 2) {
+//           ctx.fillStyle = '#F5A622';
 //         }
 //         ctx.fill();
 //         ctx.closePath();
@@ -138,6 +115,35 @@ function drawBricks() {
 //     }
 //   }
 // }
+
+// challenge 1.2 complete
+function drawBricks() {
+  for (let c = 0; c < brickColumnCount; c++) {
+    for (let r = 0; r < brickRowCount; r++) {
+      if (bricks[c][r].status === 1) {
+        const brickX = (r * (brickWidth + brickPadding)) + brickOffsetLeft;
+        const brickY = (c * (brickHeight + brickPadding)) + brickOffsetTop;
+        bricks[c][r].x = brickX;
+        bricks[c][r].y = brickY;
+        ctx.beginPath();
+        ctx.rect(brickX, brickY, brickWidth, brickHeight);
+        if (r === 0) {
+          ctx.fillStyle = '#4A90E2';
+        } else if (r === 1) {
+          ctx.fillStyle = '#834BE3';
+        } else if (r === 2) {
+          ctx.fillStyle = '#E34CC5';
+        } else if (r === 3) {
+          ctx.fillStyle = '#E3504B';
+        } else if (r === 4) {
+          ctx.fillStyle = '#DEC001';
+        }
+        ctx.fill();
+        ctx.closePath();
+      }
+    }
+  }
+}
 
 function drawScore() {
   ctx.font = '16px Arial';
