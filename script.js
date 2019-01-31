@@ -99,7 +99,7 @@ class Lives {
 
   }
   reset() {
-    
+
   }
 }
 
@@ -264,13 +264,6 @@ function draw() {
         paddleX = (canvas.width - paddleWidth) / 2;
       }
     }
-  }
-
-  function randomColors() {
-    let r = 0;
-    let g = 0;
-    let b = 0;
-    for (i )
   }
 
   if (rightPressed && paddleX < canvas.width - paddleWidth) {
