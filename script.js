@@ -82,6 +82,27 @@ class Score {
   }
 }
 
+class Lives {
+  constructor() {
+    this.x = 0;
+    this.y = 0;
+    this.color = color;
+    this.lives = 3;
+    this.font = font;
+  }
+  render(ctx) {
+    ctx.font = '16px Arial';
+    ctx.fillStyle = 'grey';
+    ctx.fillText(`Lives: ${lives}`, canvas.width - 65, 20);
+  }
+  loseLife() {
+
+  }
+  reset() {
+    
+  }
+}
+
 class Game {
   constructor() {
     this.ball = new Ball()

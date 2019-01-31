@@ -145,23 +145,23 @@ function drawPaddle() {
 //   }
 // }
 
-// challenge 1.2 complete
+// challenge 1.3 complete
 function drawBricks() {
     for (let c = 0; c < brickColumnCount; c++) {
       for (let r = 0; r < brickRowCount; r++) {
         if (bricks[c][r].status === 1) {
           const brickX = (r * (brickWidth + brickPadding)) + brickOffsetLeft;
           const brickY = (c * (brickHeight + brickPadding)) + brickOffsetTop;
+          const p = Math.floor(Math.random() * 256)
+          const l = Math.floor(Math.random() * 256)
+          const s = Math.floor(Math.random() * 256)
+          const pls = 'rgb(p,l,s)'
           bricks[c][r].x = brickX;
           bricks[c][r].y = brickY;
           ctx.beginPath();
           ctx.rect(brickX, brickY, brickWidth, brickHeight);
-          for (i = 1; i < totalBricks;) {
-            if (i % 2) {
-                ctx.fillStyle = '#4A90E2';
-            } else {
-                ctx.fillStyle = '#7ED321';
-            }
+          if (c % 2) {
+              ctx.fillStyle = 'rgb(p,l,s)';
           }
           ctx.fill();
           ctx.closePath();
