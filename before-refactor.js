@@ -91,7 +91,7 @@ function drawPaddle() {
   ctx.closePath();
 }
 
-// challenge 1 complete
+// challenge 1.1 complete
 function drawBricks() {
   for (let c = 0; c < brickColumnCount; c++) {
     for (let r = 0; r < brickRowCount; r++) {
@@ -103,11 +103,11 @@ function drawBricks() {
         ctx.beginPath();
         ctx.rect(brickX, brickY, brickWidth, brickHeight);
         if (c === 0) {
-          ctx.fillStyle = 'pink';
+          ctx.fillStyle = '#0095DD';
         } else if (c === 1) {
-          ctx.fillStyle = 'purple';
+          ctx.fillStyle = '#7ED321';
         } else if (c === 2) {
-          ctx.fillStyle = 'blue';
+          ctx.fillStyle = '#F5A622';
         }
         ctx.fill();
         ctx.closePath();
@@ -115,6 +115,30 @@ function drawBricks() {
     }
   }
 }
+
+// challenge 1.2 complete
+// function drawBricks() {
+//   for (let c = 0; c < brickColumnCount; c++) {
+//     for (let r = 0; r < brickRowCount; r++) {
+//       if (bricks[c][r].status === 1) {
+//         const brickX = (r * (brickWidth + brickPadding)) + brickOffsetLeft;
+//         const brickY = (c * (brickHeight + brickPadding)) + brickOffsetTop;
+//         bricks[c][r].x = brickX;
+//         bricks[c][r].y = brickY;
+//         ctx.beginPath();
+//         ctx.rect(brickX, brickY, brickWidth, brickHeight);
+//         if (r % 2) {
+//           ctx.fillStyle = 'pink';
+//         } else {
+//           ctx.fillStyle = 'purple';
+//         }
+//         ctx.fill();
+//         ctx.closePath();
+//       }
+//     }
+//   }
+// }
+
 function drawScore() {
   ctx.font = '16px Arial';
   ctx.fillStyle = '#0095DD';
