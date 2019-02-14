@@ -37,8 +37,8 @@ class Brick {
   }
   render(ctx) {
     ctx.beginPath();
-    ctx.rect(brickX, brickY, brickWidth, brickHeight);
-    ctx.fillStyle = 'magenta';
+    ctx.rect(this.x, this.y, this.brickWidth, this.brickHeight);
+    ctx.fillStyle = this.color;
     ctx.fill();
     ctx.closePath();
   }
