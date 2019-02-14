@@ -83,7 +83,7 @@ class Score {
 }
 
 class Lives {
-  constructor() {
+  constructor( color = 'grey', font = '16px Arial') {
     this.x = 0;
     this.y = 0;
     this.color = color;
@@ -91,9 +91,9 @@ class Lives {
     this.font = font;
   }
   render(ctx) {
-    ctx.font = '16px Arial';
-    ctx.fillStyle = 'grey';
-    ctx.fillText(`Lives: ${lives}`, canvas.width - 65, 20);
+    ctx.font = this.font;
+    ctx.fillStyle = this.color;
+    ctx.fillText(`Lives: ${lives}`, this.x, this.y);
   }
   loseLife() {
 
