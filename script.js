@@ -27,10 +27,10 @@ class Ball extends Sprite {
 }
 
 class Brick {
-  constructor() {
+  constructor( color = "pink" ) {
     this.x = 0;
     this.y = 0;
-    this.status = status;
+    this.status = 1;
     this.color = color;
     this.brickWidth = 75;
     this.brickHeight = 20;
