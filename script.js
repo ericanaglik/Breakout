@@ -5,8 +5,8 @@
 // Lives
 // Game
 
-class Ball {
-  constructor() {
+class Ball extends Sprite {
+  constructor( radius = 10 ) { // defines a parameter var with a default value
     this.x = 0;
     this.y = 0;
     this.dx = 2;
