@@ -45,7 +45,7 @@ class Brick {
 }
 
 class Paddle {
-  constructor() {
+  constructor( color = "purple" ) {
     this.x = 0;
     this.y = 0;
     this.color = color;
@@ -54,8 +54,8 @@ class Paddle {
   }
   render(ctx) {
     ctx.beginPath();
-    ctx.rect(paddleX, canvas.height - paddleHeight, paddleWidth, paddleHeight);
-    ctx.fillStyle = '#cf79f2';
+    ctx.rect(this.x, canvas.height - this.paddleHeight, this.paddleWidth, this.paddleHeight);
+    ctx.fillStyle = this.color;
     ctx.fill();
     ctx.closePath();
   }
