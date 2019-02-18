@@ -5,6 +5,10 @@
 // Lives
 // Game
 
+// *************************************
+//        BALL CLASS
+// *************************************
+
 class Ball {
   constructor(x, y, radius = 10) { // defines a parameter var with a default value
     this.x = 0;
@@ -33,8 +37,12 @@ class Ball {
   }
 }
 
+// *************************************
+//        BRICK CLASS
+// *************************************
+
 class Brick {
-  constructor(color = 'pink') {
+  constructor(x, y, color = 'pink') {
     this.x = 0;
     this.y = 0;
     this.status = 1;
