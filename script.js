@@ -5,18 +5,25 @@
 // Lives
 // Game
 
-class Ball extends Sprite {
-  constructor( radius = 10 ) { // defines a parameter var with a default value
+class Ball {
+  constructor(x, y, radius = 10) { // defines a parameter var with a default value
     this.x = 0;
     this.y = 0;
     this.dx = 2;
     this.dy = -2;
     this.radius = radius;
   }
+
+  reset() {
+    this.dx = 5;
+    this.dy = -5;
+  }
+
   move() {
     this.x += this.dx;
     this.y += this.dy;
   }
+
   render(ctx) {
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
@@ -27,7 +34,7 @@ class Ball extends Sprite {
 }
 
 class Brick {
-  constructor( color = "pink" ) {
+  constructor(color = 'pink') {
     this.x = 0;
     this.y = 0;
     this.status = 1;
@@ -35,6 +42,7 @@ class Brick {
     this.brickWidth = 75;
     this.brickHeight = 20;
   }
+
   render(ctx) {
     ctx.beginPath();
     ctx.rect(this.x, this.y, this.brickWidth, this.brickHeight);
@@ -45,13 +53,14 @@ class Brick {
 }
 
 class Paddle {
-  constructor( color = "purple" ) {
+  constructor(color = 'purple') {
     this.x = 0;
     this.y = 0;
     this.color = color;
     this.paddleHeight = 10;
     this.paddleWidth = 75;
   }
+
   render(ctx) {
     ctx.beginPath();
     ctx.rect(this.x, canvas.height - this.paddleHeight, this.paddleWidth, this.paddleHeight);
@@ -69,35 +78,41 @@ class Score {
     this.score = 0;
     this.font = font;
   }
+
   render(ctx) {
     ctx.font = '16px Arial';
     ctx.fillStyle = 'white';
     ctx.fillText(`Score: ${score}`, 8, 20);
   }
+
   update(points) {
-    
+
   }
+
   reset() {
 
   }
 }
 
 class Lives {
-  constructor( color = 'grey', font = '16px Arial') {
+  constructor(color = 'grey', font = '16px Arial') {
     this.x = 0;
     this.y = 0;
     this.color = color;
     this.lives = 3;
     this.font = font;
   }
+
   render(ctx) {
     ctx.font = this.font;
     ctx.fillStyle = this.color;
     ctx.fillText(`Lives: ${lives}`, this.x, this.y);
   }
+
   loseLife() {
 
   }
+
   reset() {
 
   }
@@ -105,7 +120,7 @@ class Lives {
 
 class Game {
   constructor() {
-    this.ball = new Ball()
+    this.ball = new Ball();
   }
 }
 
@@ -114,7 +129,7 @@ const canvas = document.getElementById('myCanvas');
 // created ctx variable to store the 2D rendering content (the actual too used to paint on the canvas)
 const ctx = canvas.getContext('2d');
 
-const ball = new Ball(canvas.width / 2, canvas.height - 30)
+const ball = new Ball(canvas.width / 2, canvas.height - 30);
 
 
 const ballRadius = 10;
@@ -216,7 +231,7 @@ function drawBricks() {
         bricks[c][r].y = brickY;
         ctx.beginPath();
         ctx.rect(brickX, brickY, brickWidth, brickHeight);
-        ctx.fillStyle = "magenta";
+        ctx.fillStyle = 'magenta';
         ctx.fill();
         ctx.closePath();
       }
