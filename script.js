@@ -104,9 +104,9 @@ class Bricks {
 // *************************************
 
 class Paddle {
-  constructor(color = 'purple') {
-    this.x = 0;
-    this.y = 0;
+  constructor( x, y, color = 'purple') {
+    this.x = x;
+    this.y = y;
     this.color = color;
     this.paddleHeight = 10;
     this.paddleWidth = 75;
