@@ -60,6 +60,49 @@ class Brick {
   }
 }
 
+// *************************************
+//         BRICKS CLASS
+// *************************************
+
+class Bricks {
+  constructor() {
+    this.brickRowCount = 5;
+    this.brickColumnCount = 3;
+    this.brickWidth = 75;
+    this.brickHeight = 20;
+    this.brickPadding = 10;
+    this.brickOffsetTop = 30;
+    this.brickOffsetLeft = 30;
+    this.bricks = [];
+    this.createBricks();
+  }
+
+  createBricks() {
+    for (let c = 0; c < this.brickColumnCount; c++) {
+      this.bricks[c] = [];
+      for (let r = 0; r < this.brickRowCount; r++) {
+        const x = (c * (75 + this.brickPadding)) + this.brickOffsetLeft;
+        const y = (r * (20 + this.brickPadding)) + this.brickOffsetTop;
+        this.bricks[c][r] = new Brick(x, y);
+      }
+    }
+  }
+
+  render(ctx) {
+    for (let c = 0; c < this.brickColumnCount; c++) {
+      for (let r = 0; r < this.brickRowCount; r++) {
+        if (this.bricks[c][r].status === 1) {
+          this.bricks[c][r].render(ctx);
+        }
+      }
+    }
+  }
+}
+
+// *************************************
+//        PADDLE CLASS
+// *************************************
+
 class Paddle {
   constructor(color = 'purple') {
     this.x = 0;
@@ -77,6 +120,10 @@ class Paddle {
     ctx.closePath();
   }
 }
+
+// *************************************
+//        SCORE CLASS
+// *************************************
 
 class Score {
   constructor() {
@@ -102,6 +149,10 @@ class Score {
   }
 }
 
+// *************************************
+//        LIVES CLASS
+// *************************************
+
 class Lives {
   constructor(color = 'grey', font = '16px Arial') {
     this.x = 0;
@@ -125,6 +176,10 @@ class Lives {
 
   }
 }
+
+// *************************************
+//      GAME CLASS
+// *************************************
 
 class Game {
   constructor() {
@@ -152,7 +207,7 @@ let rightPressed = false;
 let leftPressed = false;
 const brickRowCount = 5;
 const brickColumnCount = 3;
-const totalBricks = brickColumnCount * brickRowCount;
+// const totalBricks = brickColumnCount * brickRowCount;
 const brickWidth = 75;
 const brickHeight = 20;
 const brickPadding = 10;
