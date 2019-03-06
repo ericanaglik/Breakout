@@ -97,7 +97,7 @@ class Bricks {
 // *************************************
 
 class Paddle {
-  constructor( x, y, color = 'purple') {
+  constructor(x, y, color = 'purple') {
     this.x = x;
     this.y = y;
     this.color = color;
@@ -107,7 +107,7 @@ class Paddle {
 
   render(ctx) {
     ctx.beginPath();
-    ctx.rect(this.x, canvas.height - this.paddleHeight, this.paddleWidth, this.paddleHeight);
+    ctx.rect(this.x, this.y, this.paddleWidth, this.paddleHeight);
     ctx.fillStyle = this.color;
     ctx.fill();
     ctx.closePath();
@@ -126,7 +126,7 @@ class Score {
   render(ctx) {
     ctx.font = '16px Arial';
     ctx.fillStyle = 'white';
-    ctx.fillText(`Score: ${score}`, 8, 20);
+    ctx.fillText(`Score: ${this.score}`, 8, 20);
   }
 }
 
@@ -146,7 +146,7 @@ class Lives {
   render(ctx) {
     ctx.font = this.font;
     ctx.fillStyle = this.color;
-    ctx.fillText(`Lives: ${lives}`, this.x, this.y);
+    ctx.fillText(`Lives: ${this.lives}`, this.x, this.y);
   }
 }
 
@@ -159,16 +159,17 @@ class Game {
     // stores a reference to the <canvas> element to the canvas variable
     this.canvas = document.getElementById('myCanvas');
     // created ctx variable to store the 2D rendering content (the actual too used to paint on the canvas)
-    this.ctx = canvas.getContext('2d');
-    this.ball = new Ball(canvas.width / 2, canvas.height - 30);
+    this.ctx = this.canvas.getContext('2d');
+    this.ball = new Ball(this.canvas.width / 2, this.canvas.height - 30);
     this.paddle = new Paddle(this.canvas.width / 2, this.canvas.height - 10);
     this.bricks = new Bricks();
-    this.lives = new Life(this.canvas.width - 75);
+    this.lives = new Lives(this.canvas.width - 75);
     this.score = new Score();
     this.rightPressed = false;
     this.leftPressed = false;
     this.handlers();
   }
+
   draw() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.collisionDectection();
@@ -297,10 +298,3 @@ class Game {
 
 const game = new Game();
 game.draw();
-
-
-
-
-
-
-
