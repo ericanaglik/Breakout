@@ -6,9 +6,8 @@ class Ball {
   constructor(x, y, radius = 10) { // defines a parameter var with a default value
     this.x = x;
     this.y = y;
-    this.dx = 2;
-    this.dy = -2;
     this.radius = radius;
+    this.reset();
   }
 
   reset() {
@@ -35,10 +34,10 @@ class Ball {
 // *************************************
 
 class Brick {
-  constructor(x, y, color = 'pink') {
+  constructor(x, y, color = 'pink', status = 1) {
     this.x = x;
     this.y = y;
-    this.status = 1;
+    this.status = status;
     this.color = color;
     this.brickWidth = 75;
     this.brickHeight = 20;
@@ -61,8 +60,6 @@ class Bricks {
   constructor() {
     this.brickRowCount = 5;
     this.brickColumnCount = 3;
-    this.brickWidth = 75;
-    this.brickHeight = 20;
     this.brickPadding = 10;
     this.brickOffsetTop = 30;
     this.brickOffsetLeft = 30;
@@ -135,18 +132,15 @@ class Score {
 // *************************************
 
 class Lives {
-  constructor(color = 'grey', font = '16px Arial') {
-    this.x = 0;
-    this.y = 0;
+  constructor(placement, lives = 3, color = 'white') {
+    this.lives = lives;
+    this.placement = placement;
     this.color = color;
-    this.lives = 3;
-    this.font = font;
   }
 
   render(ctx) {
-    ctx.font = this.font;
-    ctx.fillStyle = this.color;
-    ctx.fillText(`Lives: ${this.lives}`, this.x, this.y);
+    ctx.font = '16px Arial';
+    ctx.fillText(`Lives: ${ this.lives}`, this.placement, 20);
   }
 }
 
