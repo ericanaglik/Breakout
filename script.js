@@ -39,13 +39,13 @@ class Brick {
     this.y = y;
     this.status = status;
     this.color = color;
-    this.brickWidth = 75;
-    this.brickHeight = 20;
+    this.width = 75;
+    this.height = 20;
   }
 
   render(ctx) {
     ctx.beginPath();
-    ctx.rect(this.x, this.y, this.brickWidth, this.brickHeight);
+    ctx.rect(this.x, this.y, this.width, this.height);
     ctx.fillStyle = this.color;
     ctx.fill();
     ctx.closePath();
@@ -58,8 +58,8 @@ class Brick {
 
 class Bricks {
   constructor() {
-    this.brickRowCount = 5;
-    this.brickColumnCount = 3;
+    this.brickRowCount = 3;
+    this.brickColumnCount = 5;
     this.brickPadding = 10;
     this.brickOffsetTop = 30;
     this.brickOffsetLeft = 30;
@@ -94,17 +94,17 @@ class Bricks {
 // *************************************
 
 class Paddle {
-  constructor(x, y, color = 'purple') {
+  constructor(x, y, color = 'purple', height = 10, width = 75) {
     this.x = x;
     this.y = y;
     this.color = color;
-    this.paddleHeight = 10;
-    this.paddleWidth = 75;
+    this.height = height;
+    this.width = width;
   }
 
   render(ctx) {
     ctx.beginPath();
-    ctx.rect(this.x, this.y, this.paddleWidth, this.paddleHeight);
+    ctx.rect(this.x, this.y, this.width, this.height);
     ctx.fillStyle = this.color;
     ctx.fill();
     ctx.closePath();
@@ -169,7 +169,7 @@ class Game {
     this.collisionDectection();
     this.drawBall();
     this.drawPaddle();
-    this.drawBricks();
+    this.createBricks();
     this.drawScore();
     this.drawLife();
     this.paddleMove();
@@ -182,7 +182,7 @@ class Game {
     this.ball.move();
   }
 
-  drawBricks() {
+  createBricks() {
     this.bricks.render(this.ctx);
   }
 
